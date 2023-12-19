@@ -1,0 +1,69 @@
+﻿﻿
+@model IEnumerable<Data>
+
+@{
+    ViewData["Title"] = "TestData";
+}
+
+<h1>TestData</h1>
+<div class="container-fluid mt-4">
+    <div class="row toolbar">
+        <div class="col">
+            <label for="language-select">Select language:</label>
+            <select id="language-select" class="form-control">
+                <option value="en">English</option>
+                <option value="pl">Polish</option>
+                <option value="ru" selected>Russian</option>
+            </select>
+        </div>
+        <div class="col">
+            <input type="range" id="slider" min="0" max="10" step="0.25" value="0" class="form-control">
+        </div>
+        <div class="col">
+            <span id="slider-value"></span>
+        </div>
+        <div class="col">
+            <label for="text-field">Error's count:</label>
+            <input type="text" id="error-field" class="form-control" value="0">
+        </div>
+        <div class="col">
+            <label for="text-field">Seed:</label>
+            <input type="text" id="seed-field" class="form-control" value="0">
+        </div>
+        <div class="col">
+            <button id="seed-random-button" class="btn btn-primary">Generate random value</button>
+        </div>
+    </div>
+</div>
+<table id="Table" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telephone)
+            </th>
+        </tr>
+    </thead>
+    <tbody id="Body">
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="~/js/InfinityScroll.js"></script>
+
+    <script>
+        var infinityScroll = new InfinityScroll("Table","Body", "/Home/PartialTable", {});
+        
+    </script>
+}
